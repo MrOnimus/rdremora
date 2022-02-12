@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+  creationTimestamp: null
+  labels:
+    app: willsapp
+  name: willsingress
+  namespace: dev
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: willsservice
+            port:
+              number: 8888
+        path: /
+        pathType: ImplementationSpecific
+status:
+  loadBalancer: {}
